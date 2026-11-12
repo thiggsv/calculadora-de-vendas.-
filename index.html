@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Calculadora de vendas</title> 
+</head>
+<body> 
+<h1>Calculadora de vendas</h1> 
+<label for="preco">Preço (R$):</label> 
+<input id="preco" type="number" min="0" step="0.01"> 
+<label for="quantidade">Quantidade:</label> 
+<input id="quantidade" type="number" min="1" step="1"> 
+<button onclick="calcular()">Calcular</button> 
+<p id="resultado"></p> 
+<script> 
+function calcular() {
+const preco = Number(document.getElementById("preco").value); 
+const quantidade = Number(document.getElementById("quantidade").value); 
+const resultado = document.getElementById("resultado"); 
+if (preco <= 0 || !Number.isInteger(quantidade) || quantidade <= 0) { 
+    resultado.textContent = "Informe um preço e uma quantidade válidos."; 
+return; 
+} 
+const total = preco * quantidade; 
+resultado.textContent = "Total da venda: " + total.toLocaleString("pt-BR", {style: "currency", currency: "BRL"}); 
+} 
+</script>
+</body> 
+</html>
